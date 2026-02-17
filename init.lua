@@ -39,24 +39,48 @@ require("lazy").setup({
       end,
     },
 
-    -- File tree
+    -- Snacks
     {
-      "nvim-neo-tree/neo-tree.nvim",
-      branch = "v3.x",
+      "folke/snacks.nvim",
+      priority = 1000,
+      lazy = false,
+      config = function()
+        require("snacks").setup({
+          bigfile = { enabled = true },
+          dashboard = { enabled = true },
+          explorer = {
+            enabled = true,
+            open = "tabopen",
+            mappings = {
+              ["<CR>"] = "tabopen", -- Enter key opens in new tab
+              ["t"] = "edit",      -- 't' key for edit in current window
+            },
+          },
+          indent = { enabled = true },
+          input = { enabled = true },
+          picker = { enabled = true },
+          notifier = { enabled = true },
+          quickfile = { enabled = true },
+          scope = { enabled = true },
+          scroll = { enabled = true },
+          statuscolumn = { enabled = true },
+          words = { enabled = true },
+        })
+      end,
+    },
+
+    -- Buffer tabs (barbar)
+    {
+      "romgrk/barbar.nvim",
       dependencies = {
-        "nvim-lua/plenary.nvim",
-        "MunifTanjim/nui.nvim",
+        "lewis6991/gitsigns.nvim",
         "nvim-tree/nvim-web-devicons",
       },
-      lazy = false,
-      keys = {
-        { "<leader>e", "<cmd>Neotree toggle<cr>", desc = "Toggle file tree" },
-      },
-      opts = {
-        filesystem = {
-          follow_current_file = { enabled = true },
-        },
-      },
+      init = function()
+        vim.g.barbar_auto_setup = false
+      end,
+      opts = {},
+      version = "^1.0.0",
     },
 
     -- Fuzzy finder
@@ -96,6 +120,50 @@ require("lazy").setup({
       end,
     },
 
+    -- Formatting (conform)
+    {
+      "stevearc/conform.nvim",
+      config = function()
+        require("conform").setup({
+          formatters_by_ft = {
+            lua = { "stylua" },
+            python = { "isort", "black" },
+            rust = { "rustfmt", lsp_format = "fallback" },
+            javascript = { "prettierd", "prettier", stop_after_first = true },
+            typescript = { "prettierd", "prettier", stop_after_first = true },
+            markdown = { "prettierd", "prettier", stop_after_first = true },
+            json = { "prettierd", "prettier", stop_after_first = true },
+            yaml = { "prettierd", "prettier", stop_after_first = true },
+            html = { "prettierd", "prettier", stop_after_first = true },
+            css = { "prettierd", "prettier", stop_after_first = true },
+            go = { "gofmt" },
+          },
+        })
+      end,
+    },
+
+    -- Git (fugit2)
+    {
+      "SuperBo/fugit2.nvim",
+      build = false,
+      opts = {
+        width = 100,
+      },
+      dependencies = {
+        "MunifTanjim/nui.nvim",
+        "nvim-tree/nvim-web-devicons",
+        "nvim-lua/plenary.nvim",
+        {
+          "chrisgrieser/nvim-tinygit",
+          dependencies = { "stevearc/dressing.nvim" },
+        },
+      },
+      cmd = { "Fugit2", "Fugit2Diff", "Fugit2Graph" },
+      keys = {
+        { "<leader>F", mode = "n", "<cmd>Fugit2<cr>", desc = "Fugit2" },
+      },
+    },
+
     -- Claude Code (AI)
     {
       "coder/claudecode.nvim",
@@ -126,10 +194,35 @@ require("lazy").setup({
 })
 
 -- =============================================================================
+-- Keymaps
+-- =============================================================================
+require("keymaps").setup()
+
+-- =============================================================================
+-- User Commands
+-- =============================================================================
+-- Keymap viewer commands
+vim.api.nvim_create_user_command("Keymaps", function()
+    require("keymap-viewer").show()
+end, { desc = "Show all keymaps in pretty format" })
+
+vim.api.nvim_create_user_command("KeymapsNormal", function()
+    require("keymap-viewer").show_normal()
+end, { desc = "Show normal mode keymaps" })
+
+vim.api.nvim_create_user_command("KeymapsLeader", function()
+    require("keymap-viewer").show_leader()
+end, { desc = "Show leader keymaps" })
+
+vim.api.nvim_create_user_command("KeymapsSearch", function(opts)
+    require("keymap-viewer").show({ filter = opts.args })
+end, { nargs = 1, desc = "Search keymaps" })
+
+-- =============================================================================
 -- Editor options
 -- =============================================================================
 vim.opt.expandtab = true
-vim.opt.tabstop = 2
-vim.opt.softtabstop = 2
-vim.opt.shiftwidth = 2
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
 vim.opt.number = true

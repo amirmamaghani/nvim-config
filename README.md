@@ -2,18 +2,97 @@
 
 Neovim config managed with [lazy.nvim](https://github.com/folke/lazy.nvim).
 
-**Plugins:** Catppuccin, neo-tree, Telescope, nvim-treesitter, claudecode.nvim (AI).
+**Plugins:** Catppuccin, Snacks, barbar.nvim (buffer tabs), Telescope, nvim-treesitter, conform.nvim, fugit2.nvim (Git), claudecode.nvim (AI).
 
 **Leader:** `<Space>`
 
-| Key       | Action              |
-| --------- | ------------------- |
-| `<leader>e`  | Toggle file tree (neo-tree) |
-| `<leader>ff` | Find files (Telescope)     |
-| `<leader>fg` | Live grep                  |
-| `<leader>fb` | Buffers                    |
-| `<leader>fh` | Help tags                  |
-| `<leader>a*` | Claude Code (AI)           |
+## Structure
+
+```
+nvim-config/
+├── init.lua              # Main config (bootstrap, plugins, options)
+└── lua/
+    ├── keymaps.lua       # All keybindings organized by category
+    └── keymap-viewer.lua # Pretty keymap display with search
+```
+
+## ✨ Features
+
+- **📋 Pretty Keymap Viewer** - View all keymaps in a formatted table (no more ugly Lua references!)
+  - Use `:Keymaps` or `<leader>fK` to open
+  - Press `/` to search, `r` to refresh, `q` to close
+  - Filter by mode, key, or action
+- **🎯 Modular Keymap System** - All keymaps organized in categories
+- **🔍 Multiple Search Methods** - Telescope fuzzy search or pretty viewer
+- **📝 Well Documented** - Comprehensive guides and examples
+
+## Default Keybindings
+
+### File Navigation
+
+| Key          | Action                               |
+| ------------ | ------------------------------------ |
+| `<leader>e`  | Toggle file explorer                 |
+| `<leader>E`  | Focus explorer / reveal current file |
+| `<leader>ff` | Find files                           |
+| `<leader>fg` | Live grep                            |
+| `<leader>fb` | Buffers                              |
+| `<leader>fh` | Help tags                            |
+| `<leader>fc` | Find commands                        |
+| `<leader>fk` | Find keymaps                         |
+| `<leader>fr` | Recent files                         |
+
+### Quit
+| Key           | Action                 |
+| ------------- | ---------------------- |
+| `<leader>qq`  | Quit Neovim (all)      |
+| `<leader>wq`  | Save all and quit      |
+
+### Window Management
+
+| Key              | Action           |
+| ---------------- | ---------------- |
+| `<C-h/j/k/l>`    | Navigate windows |
+| `<C-Up/Down>`    | Resize height    |
+| `<C-Left/Right>` | Resize width     |
+
+### Buffer Management (barbar)
+
+| Key                         | Action                          |
+| --------------------------- | ------------------------------- |
+| `<Tab>` / `<S-Tab>`         | Next / previous buffer          |
+| `<leader>bn` / `<leader>bp` | Next / previous buffer          |
+| `<leader>w`                 | Close buffer (tab)              |
+| `<leader>bd`                | Close buffer                    |
+| `<leader>bb`                | Pick buffer                     |
+| `<leader>b1` … `<leader>b9` | Goto buffer 1–9                 |
+| `<S-h>` / `<S-l>`           | Previous / next buffer (legacy) |
+
+### Formatting & Code
+
+| Key          | Action            |
+| ------------ | ----------------- |
+| `<leader>cf` | Format file/range |
+| `<leader>ca` | Code action (LSP) |
+| `<leader>rn` | Rename symbol     |
+
+### Git (Fugit2)
+
+| Key          | Action      |
+| ------------ | ----------- |
+| `<leader>F`  | Open Fugit2 |
+| `<leader>gd` | Git diff    |
+| `<leader>gg` | Git graph   |
+
+### AI (Claude Code)
+
+| Key          | Action             |
+| ------------ | ------------------ |
+| `<leader>ac` | Toggle Claude      |
+| `<leader>af` | Focus Claude       |
+| `<leader>ab` | Add current buffer |
+| `<leader>aa` | Accept diff        |
+| `<leader>ad` | Deny diff          |
 
 ## Install
 
@@ -25,4 +104,49 @@ cd nvim-config
 ln -sf "$(pwd)" ~/.config/nvim
 ```
 
-If `~/.config/nvim` already exists, remove or rename it first. Start Neovim; lazy.nvim will install plugins on first run.
+If `~/.config/nvim` already exists, remove or rename it first.
+
+**macOS users:** Install libgit2 for Git integration:
+
+```bash
+brew install libgit2
+```
+
+Start Neovim; lazy.nvim will install plugins on first run.
+
+## Documentation
+
+- **[QUICKREF.md](QUICKREF.md)** - ⚡ Quick reference card (start here!)
+- **[VIEWER-DEMO.md](VIEWER-DEMO.md)** - 🎨 Keymap viewer screenshots and usage
+- **[KEYMAP-ORGANIZATION.md](KEYMAP-ORGANIZATION.md)** - 📍 Where are my keymaps? (init.lua vs keymaps.lua)
+- **[GIT-SETUP.md](GIT-SETUP.md)** - 🔧 Git integration with Fugit2
+- **[KEYMAPS.md](KEYMAPS.md)** - Complete keymap management guide
+- **[EXAMPLES.md](EXAMPLES.md)** - Real-world plugin integration examples
+- **[ARCHITECTURE.md](ARCHITECTURE.md)** - System overview and design patterns
+
+## Customization
+
+### Adding/Modifying Keymaps
+
+All keymaps are organized in `lua/keymaps.lua` by category. See [KEYMAPS.md](KEYMAPS.md) for details:
+
+- Adding new keymaps
+- Creating custom categories
+- LSP keybindings
+- Best practices and conventions
+
+### Adding Plugins
+
+1. Add plugin spec to `init.lua` under the appropriate section
+2. Add keymaps to `lua/keymaps.lua` in a new or existing category
+3. Update `M.setup()` if you created a new category
+
+See [EXAMPLES.md](EXAMPLES.md) for complete examples of adding LSP, Git, Debug, and other plugins.
+
+## Recommendations
+
+### Fonts
+
+For the best experience, install a [Nerd Font](https://github.com/ryanoasis/nerd-fonts) to display icons properly in the file tree and statusline. Follow the [font installation guide](https://github.com/ryanoasis/nerd-fonts?tab=readme-ov-file#font-installation), then configure your terminal to use the installed font.
+
+For iTerm2 users: Go to **Settings → Profiles → Text** and set the font to "Hack Nerd Font" (or your preferred Nerd Font).
