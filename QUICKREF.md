@@ -64,6 +64,11 @@
 |-----|--------|
 | `<leader>cf` | Format file or selection |
 
+### Markdown (render-markdown)
+| Key | Action |
+|-----|--------|
+| `<leader>mp` | Toggle source / preview |
+
 ### Git (Fugit2)
 | Key | Action |
 |-----|--------|

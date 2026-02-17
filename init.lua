@@ -115,6 +115,26 @@ require("lazy").setup({
       lazy = false,
       build = ":TSUpdate",
       config = function()
+        -- Use tree-sitter-grammars markdown parser (split_parser: block + inline)
+        -- https://github.com/tree-sitter-grammars/tree-sitter-markdown
+        local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+        parser_config.markdown = {
+          install_info = {
+            url = "https://github.com/tree-sitter-grammars/tree-sitter-markdown",
+            branch = "split_parser",
+            files = { "src/parser.c" },
+            location = "tree-sitter-markdown",
+          },
+        }
+        parser_config.markdown_inline = {
+          install_info = {
+            url = "https://github.com/tree-sitter-grammars/tree-sitter-markdown",
+            branch = "split_parser",
+            files = { "src/parser.c" },
+            location = "tree-sitter-markdown-inline",
+          },
+        }
+
         require("nvim-treesitter").setup({
           ensure_installed = { "javascript", "typescript", "go", "markdown", "markdown_inline" },
           highlight = { enable = true },

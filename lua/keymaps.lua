@@ -107,6 +107,14 @@ function M.setup_formatting()
 end
 
 -- =============================================================================
+-- Markdown (render-markdown.nvim)
+-- =============================================================================
+function M.setup_markdown()
+    -- Toggle between source and rendered preview (current buffer only)
+    map("n", "<leader>mp", "<cmd>RenderMarkdown buf_toggle<cr>", { desc = "Toggle Markdown source/preview" })
+end
+
+-- =============================================================================
 -- LSP Keymaps (to be set when LSP attaches)
 -- =============================================================================
 function M.setup_lsp(bufnr)
@@ -188,6 +196,7 @@ function M.setup()
     M.setup_explorer()
     M.setup_telescope()
     M.setup_formatting()
+    M.setup_markdown()
     M.setup_barbar()
     M.setup_git()
     M.setup_debug()
