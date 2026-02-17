@@ -1,4 +1,4 @@
-# Telescope ignore patterns
+# Search ignore patterns (used by Telescope)
 # One pattern per line, supports Lua patterns
 # Lines starting with # are comments
 
