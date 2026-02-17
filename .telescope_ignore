@@ -1,0 +1,25 @@
+# Telescope ignore patterns
+# One pattern per line, supports Lua patterns
+# Lines starting with # are comments
+
+# Dependencies
+node_modules
+vendor
+.venv
+__pycache__
+
+# Build outputs
+dist
+build
+target
+.next
+
+# Version control
+.git
+
+# IDE/Editor
+.idea
+.vscode
+
+# OS files
+.DS_Store

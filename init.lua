@@ -92,18 +92,21 @@ require("lazy").setup({
         { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
       },
       keys = {
-        { "<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<cr>", desc = "Find files" },
+        { "<leader>ff", "<cmd>lua require('telescope.builtin').find_files({ hidden = true })<cr>", desc = "Find files"},
         { "<leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<cr>", desc = "Live grep" },
         { "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<cr>", desc = "Buffers" },
         { "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>", desc = "Help tags" },
       },
-      opts = {
-        defaults = {
-          mappings = {
-            i = { ["<C-h>"] = "which_key" },
+      config = function()
+        require("telescope").setup({
+          defaults = {
+            file_ignore_patterns = require("telescope-ignore").load_patterns(),
+            mappings = {
+              i = { ["<C-h>"] = "which_key" },
+            },
           },
-        },
-      },
+        })
+      end,
     },
 
     -- Treesitter
