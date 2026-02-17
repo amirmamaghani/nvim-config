@@ -54,6 +54,10 @@ function M.setup_general()
     -- Better paste (don't yank replaced text)
     map("v", "p", '"_dP', { desc = "Paste without yanking" })
 
+    -- Save
+    map("n", "<leader>s", "<cmd>w<cr>", { desc = "Save buffer" })
+    map("n", "<leader>S", "<cmd>wa<cr>", { desc = "Save all buffers" })
+
     -- Quit Neovim
     map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all (close Neovim)" })
     map("n", "<leader>wq", "<cmd>wqa<cr>", { desc = "Save all and quit" })
@@ -131,9 +135,8 @@ function M.setup_barbar()
     map("n", "<S-Tab>", "<cmd>BufferPrevious<cr>", { desc = "Previous buffer" })
 
     -- Close / restore
-    map("n", "<leader>w", "<cmd>BufferClose<cr>", { desc = "Close buffer (tab)" })
+    map("n", "<leader>x", "<cmd>BufferClose<cr>", { desc = "Close buffer" })
     map("n", "<leader>bd", "<cmd>BufferClose<cr>", { desc = "Close buffer" })
-    map("n", "<leader>bq", "<cmd>BufferClose<cr>", { desc = "Close buffer" })
     map("n", "<leader>br", "<cmd>BufferRestore<cr>", { desc = "Restore closed buffer" })
 
     -- Pick buffer (fuzzy / letter jump)
