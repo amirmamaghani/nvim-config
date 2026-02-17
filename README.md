@@ -2,7 +2,7 @@
 
 Neovim config managed with [lazy.nvim](https://github.com/folke/lazy.nvim).
 
-**Plugins:** Catppuccin, Snacks, barbar.nvim (buffer tabs), Telescope, nvim-treesitter, conform.nvim, fugit2.nvim (Git), claudecode.nvim (AI).
+**Plugins:** Catppuccin, Snacks, barbar.nvim (buffer tabs), Telescope, nvim-treesitter, conform.nvim, fugit2.nvim (Git), claudecode.nvim (AI), which-key.nvim.
 
 **Leader:** `<Space>`
 
@@ -12,19 +12,15 @@ Neovim config managed with [lazy.nvim](https://github.com/folke/lazy.nvim).
 nvim-config/
 ├── init.lua              # Main config (bootstrap, plugins, options)
 └── lua/
-    ├── keymaps.lua       # All keybindings organized by category
-    └── keymap-viewer.lua # Pretty keymap display with search
+    └── keymaps.lua       # All keybindings organized by category
 ```
 
-## ✨ Features
+## Features
 
-- **📋 Pretty Keymap Viewer** - View all keymaps in a formatted table (no more ugly Lua references!)
-  - Use `:Keymaps` or `<leader>fK` to open
-  - Press `/` to search, `r` to refresh, `q` to close
-  - Filter by mode, key, or action
-- **🎯 Modular Keymap System** - All keymaps organized in categories
-- **🔍 Multiple Search Methods** - Telescope fuzzy search or pretty viewer
-- **📝 Well Documented** - Comprehensive guides and examples
+- **Which-key** - Press `<leader>` and wait to see available keymaps, or `<leader>?` for buffer-local keymaps
+- **Modular Keymap System** - All keymaps organized in categories
+- **Multiple Search Methods** - Telescope fuzzy search or which-key hints
+- **Well Documented** - Comprehensive guides and examples
 
 ## Default Keybindings
 
@@ -116,10 +112,9 @@ Start Neovim; lazy.nvim will install plugins on first run.
 
 ## Documentation
 
-- **[QUICKREF.md](QUICKREF.md)** - ⚡ Quick reference card (start here!)
-- **[VIEWER-DEMO.md](VIEWER-DEMO.md)** - 🎨 Keymap viewer screenshots and usage
-- **[KEYMAP-ORGANIZATION.md](KEYMAP-ORGANIZATION.md)** - 📍 Where are my keymaps? (init.lua vs keymaps.lua)
-- **[GIT-SETUP.md](GIT-SETUP.md)** - 🔧 Git integration with Fugit2
+- **[QUICKREF.md](QUICKREF.md)** - Quick reference card (start here!)
+- **[KEYMAP-ORGANIZATION.md](KEYMAP-ORGANIZATION.md)** - Where are my keymaps? (init.lua vs keymaps.lua)
+- **[GIT-SETUP.md](GIT-SETUP.md)** - Git integration with Fugit2
 - **[KEYMAPS.md](KEYMAPS.md)** - Complete keymap management guide
 - **[EXAMPLES.md](EXAMPLES.md)** - Real-world plugin integration examples
 - **[ARCHITECTURE.md](ARCHITECTURE.md)** - System overview and design patterns

@@ -188,6 +188,22 @@ require("lazy").setup({
         { "<leader>ad", "<cmd>ClaudeCodeDiffDeny<cr>", desc = "Deny diff" },
       },
     },
+
+    -- Which-key (keybinding hints)
+    {
+      "folke/which-key.nvim",
+      event = "VeryLazy",
+      opts = {},
+      keys = {
+        {
+          "<leader>?",
+          function()
+            require("which-key").show({ global = false })
+          end,
+          desc = "Buffer Local Keymaps (which-key)",
+        },
+      },
+    },
   },
   install = { colorscheme = { "habamax" } },
   checker = { enabled = true },
@@ -197,26 +213,6 @@ require("lazy").setup({
 -- Keymaps
 -- =============================================================================
 require("keymaps").setup()
-
--- =============================================================================
--- User Commands
--- =============================================================================
--- Keymap viewer commands
-vim.api.nvim_create_user_command("Keymaps", function()
-    require("keymap-viewer").show()
-end, { desc = "Show all keymaps in pretty format" })
-
-vim.api.nvim_create_user_command("KeymapsNormal", function()
-    require("keymap-viewer").show_normal()
-end, { desc = "Show normal mode keymaps" })
-
-vim.api.nvim_create_user_command("KeymapsLeader", function()
-    require("keymap-viewer").show_leader()
-end, { desc = "Show leader keymaps" })
-
-vim.api.nvim_create_user_command("KeymapsSearch", function(opts)
-    require("keymap-viewer").show({ filter = opts.args })
-end, { nargs = 1, desc = "Search keymaps" })
 
 -- =============================================================================
 -- Editor options

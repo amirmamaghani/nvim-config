@@ -7,6 +7,7 @@
 --       - Telescope: <leader>ff, fg, fb, fh
 --       - Fugit2: <leader>F
 --       - Claude Code: <leader>a*
+--       - Which-key: <leader>? (show buffer local keymaps)
 --       Barbar keymaps are in this file (setup_barbar).
 -- =============================================================================
 
@@ -86,15 +87,6 @@ function M.setup_telescope()
     map("n", "<leader>fc", "<cmd>lua require('telescope.builtin').commands()<cr>", { desc = "Find commands" })
     map("n", "<leader>fk", "<cmd>lua require('telescope.builtin').keymaps()<cr>", { desc = "Find keymaps (Telescope)" })
     map("n", "<leader>fr", "<cmd>lua require('telescope.builtin').oldfiles()<cr>", { desc = "Recent files" })
-end
-
--- =============================================================================
--- Keymap Viewer (Pretty display with search)
--- =============================================================================
-function M.setup_keymap_viewer()
-    map("n", "<leader>fK", "<cmd>lua require('keymap-viewer').show()<cr>", { desc = "Show all keymaps (pretty)" })
-    map("n", "<leader>fn", "<cmd>lua require('keymap-viewer').show_normal()<cr>", { desc = "Show normal mode keymaps" })
-    map("n", "<leader>fl", "<cmd>lua require('keymap-viewer').show_leader()<cr>", { desc = "Show leader keymaps" })
 end
 
 -- =============================================================================
@@ -192,7 +184,6 @@ function M.setup()
     M.setup_general()
     M.setup_explorer()
     M.setup_telescope()
-    M.setup_keymap_viewer()
     M.setup_formatting()
     M.setup_barbar()
     M.setup_git()

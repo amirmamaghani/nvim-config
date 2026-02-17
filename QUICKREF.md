@@ -15,9 +15,7 @@
 | `<leader>fr` | Recent files |
 | `<leader>fc` | Find commands |
 | `<leader>fk` | Find keymaps (Telescope) |
-| `<leader>fK` | **Show all keymaps (pretty viewer)** |
-| `<leader>fn` | Show normal mode keymaps |
-| `<leader>fl` | Show leader keymaps |
+| `<leader>?` | Show buffer local keymaps (which-key) |
 
 ### Quit
 | Key | Action |
@@ -127,16 +125,9 @@
 
 ## Commands
 
-### Keymap Viewer (NEW!)
-- `:Keymaps` - Show all keymaps in pretty format
-- `:KeymapsNormal` - Show normal mode keymaps only
-- `:KeymapsLeader` - Show leader keymaps only
-- `:KeymapsSearch <term>` - Search keymaps by key or action
-
-**In the keymap viewer:**
-- Press `/` to search
-- Press `r` to refresh
-- Press `q` or `Esc` to close
+### Which-key (Keybinding Hints)
+- `<leader>?` - Show buffer local keymaps
+- Start typing a key sequence and wait - which-key shows available completions
 
 ### Plugin Management
 - `:Lazy` - Open lazy.nvim UI
@@ -159,14 +150,9 @@
 
 ### Discover Keymaps
 
-**Pretty Viewer (Recommended):**
-```vim
-:Keymaps
-```
-Shows all keymaps in a formatted table with mode, key, and action.
-- Press `/` to search interactively
-- Press `r` to refresh
-- No more ugly Lua references!
+**Which-key (Recommended):**
+Press `<leader>` and wait - which-key will show all available keymaps starting with leader.
+Or press `<leader>?` to show buffer-local keymaps.
 
 **Telescope (Fuzzy Search):**
 ```vim

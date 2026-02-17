@@ -179,7 +179,6 @@ end
 - Telescope extras: `<leader>fc`, `fk`, `fr`
 - Formatting: `<leader>cf`
 - Git extras: `<leader>gd`, `gg`
-- Keymap viewer: `<leader>fK`, `fn`, `fl`
 
 **Advantages:**
 - ✅ Centralized view of all keymaps by category
@@ -197,15 +196,15 @@ end
 
 **To see all keymaps** (both plugin and module):
 ```vim
-:Keymaps              " Pretty viewer (shows all)
-<leader>fK            " Same as above
+<leader>              " Press and wait - which-key shows available keymaps
+<leader>?             " Show buffer-local keymaps
 :Telescope keymaps    " Fuzzy search all keymaps
 ```
 
 **To find plugin keymaps:**
 1. Check `init.lua` under the plugin's `keys` spec
 2. Check `lua/keymaps.lua` under the relevant `setup_*()` function
-3. Use `:Keymaps` and search for the plugin name
+3. Use `:Telescope keymaps` and search for the plugin name
 
 ## Extension Patterns
 

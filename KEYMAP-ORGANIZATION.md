@@ -11,7 +11,7 @@ This config uses a **hybrid approach** - keymaps are split between two locations
 | **Core plugin commands** | `init.lua` (plugin `keys` spec) | `<leader>ff` (Telescope find files) |
 | **General editor** | `lua/keymaps.lua` | `<C-h>` (move to left window) |
 | **Additional plugin commands** | `lua/keymaps.lua` | `<leader>fc` (Telescope find commands) |
-| **Custom functions** | `lua/keymaps.lua` | `<leader>fK` (keymap viewer) |
+| **Custom functions** | `lua/keymaps.lua` | `<leader>cf` (format) |
 
 ## Decision Tree
 
@@ -79,11 +79,6 @@ keys = {
 - `<leader>fc` - Find commands
 - `<leader>fk` - Find keymaps (Telescope)
 - `<leader>fr` - Recent files
-
-**Keymap Viewer** (`setup_keymap_viewer`):
-- `<leader>fK` - Show all keymaps (pretty)
-- `<leader>fn` - Show normal mode keymaps
-- `<leader>fl` - Show leader keymaps
 
 **Formatting** (`setup_formatting`):
 - `<leader>cf` - Format file or range

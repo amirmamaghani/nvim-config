@@ -154,35 +154,19 @@ LSP keymaps are set automatically when an LSP attaches to a buffer. To customize
 
 ## Viewing Keymaps
 
-### Pretty Keymap Viewer (Recommended)
+### Which-key (Recommended)
 
-The config includes a custom keymap viewer that displays keymaps in a clean, readable format:
+The config includes [which-key.nvim](https://github.com/folke/which-key.nvim) for discovering keymaps:
 
-**Commands:**
-```vim
-:Keymaps              " Show all keymaps
-:KeymapsNormal        " Show normal mode only
-:KeymapsLeader        " Show leader keymaps only
-:KeymapsSearch <term> " Search for specific term
-```
-
-**Keymaps:**
-- `<leader>fK` - Show all keymaps (pretty viewer)
-- `<leader>fn` - Show normal mode keymaps
-- `<leader>fl` - Show leader keymaps
-
-**In the viewer:**
-- Press `/` to search interactively
-- Press `r` to refresh the display
-- Press `q` or `Esc` to close
+- Press `<leader>` and wait - which-key shows all available keymaps starting with leader
+- Press `<leader>?` to show buffer-local keymaps
+- Works with any key prefix - just start typing and wait
 
 **Features:**
-- Clean table format with borders
-- Shows mode, key, and action/description
-- Indicates buffer-local keymaps with [B]
-- No ugly Lua function references!
-- Interactive search and filtering
-- Sorted by mode and key
+- Shows keymaps as you type
+- Groups related keymaps together
+- Shows descriptions for each keymap
+- No configuration needed
 
 ### Telescope (Fuzzy Search)
 
